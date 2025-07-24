@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Température Zone de vie",
+        "data": {
+            "TZ1": "1er (mesure)",
+            "Tcons1": "1er (consigne)",
+            "TZ2": "RDC (mesure)",
+            "Tcons2": "RDC (consigne)",
+            "TZ3": "2ème (mesure)",
+            "Tcons3": "2ème (consigne)"
+        },
+        "y_label": "[°C]",
+        "y_limit": {
+            "min": 20,
+            "max": 30
+        }
+    },
+    {
+        "name": "Température installation",
+        "data": {
+            "Text": "Extérieur",
+            "Tcapt": "Sortie Capteurs",
+            "TcaptF": "Entree Capteurs",
+            "TbalS": "Ballon ECS (bas)",
+            "TbalA": "Ballon ECS (haut)",
+            "TalT": "Ballon Tampon (haut)",
+            "TretC": "Retour boucle de chauffage",
+            "TdepC": "Départ boucle de chauffage"
+        },
+        "y_label": "[°C]"
+    },
+    {
+        "name": "Circulateurs",
+        "data": {
+            "HC/HP": "HC/HP??",
+            "APP": "Appoint",
+            "SOL": "Solaire",
+            "BTC": "Tampon",
+            "C1": "1er (Planché Chauffant)",
+            "C2": "Rez (Radiateur)",
+            "C3": "2ème (Radiateur)"
+        },
+        "y_label": "[%]"
+    },
+    {
+        "name": "Chaudiere",
+        "data": {
+            "chdr1": "chdr1"
+        },
+        "y_label": "[%]"
+    }
+] 
