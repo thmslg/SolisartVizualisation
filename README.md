@@ -72,6 +72,8 @@ This will:
 2. Create a cleaned version with `.clean.csv` suffix
 3. Generate an interactive plot with 4 subplots showing different system metrics
 
+![example](./example/SC2M202XXXXX-2025-07-22.png)
+
 ## Data Format
 
 The script expects CSV files with the following columns:
