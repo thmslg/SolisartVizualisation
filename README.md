@@ -66,6 +66,56 @@ You have to download manually your csv data as per illustrated here:
 
 For advanced users who prefer direct Docker commands, see the detailed Docker command in the `run_visualization.sh` script.
 
+#### Customizing Subplot Configuration
+
+The visualization tool uses a JSON configuration file (`figure_config.json`) to define the structure and appearance of each subplot. You can customize this file to modify which data columns are displayed, their labels, and plot settings.
+
+**Configuration File Structure:**
+
+The `figure_config.json` file contains an array of subplot objects, where each object defines one subplot with the following properties:
+
+- **`name`** (string): The title displayed above the subplot
+- **`data`** (object): A key-value mapping where:
+  - **Key**: CSV column name (e.g., "TZ1", "Text", "HC/HP")
+  - **Value**: Display label for the legend (e.g., "1er (mesure)", "Extérieur")
+- **`y_label`** (string): Y-axis label with units (e.g., "[°C]", "[%]")
+- **`y_limit`** (optional object): Y-axis limits with:
+  - **`min`** (number): Minimum Y-axis value
+  - **`max`** (number): Maximum Y-axis value
+
+**Example Configuration:**
+```json
+[
+    {
+        "name": "Température Zone de vie",
+        "data": {
+            "TZ1": "1er (mesure)",
+            "Tcons1": "1er (consigne)",
+            "TZ2": "RDC (mesure)",
+            "Tcons2": "RDC (consigne)"
+        },
+        "y_label": "[°C]",
+        "y_limit": {
+            "min": 20,
+            "max": 30
+        }
+    }
+]
+```
+
+**Customization Options:**
+
+1. **Add/Remove Data Series**: Modify the `data` object to include or exclude specific CSV columns
+2. **Change Labels**: Update the display names in the `data` values to customize legend labels
+3. **Set Y-Axis Limits**: Add a `y_limit` object to control the Y-axis range for better visualization
+4. **Modify Units**: Change the `y_label` to reflect different measurement units
+5. **Reorder Subplots**: Rearrange the array order to change subplot positioning
+
+**Using a Custom Configuration:**
+```bash
+./run_visualization.sh --config my_custom_config.json ./example/data.csv 22
+```
+
 ## Data Format
 
 The script expects CSV files with the following columns:
