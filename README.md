@@ -24,9 +24,9 @@ A Python script for visualizing and analyzing data from Solisart solar heating s
 ## Installation
 
 1. Clone or download this repository
-2. Build the Docker image:
+2. Make the script executable:
 ```bash
-docker build -t solisart-viz .
+chmod +x run_visualization.sh
 ```
 
 ## Usage
@@ -36,39 +36,36 @@ docker build -t solisart-viz .
 xhost +local:docker
 ```
 
-#### Run with Docker
+#### Run with the shell script (recommended)
 ```bash
-docker run --rm -it \
-  -e DISPLAY=$DISPLAY \
-  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-  -v $(pwd):/app/data \
-  -v $HOME/.Xauthority:/root/.Xauthority:rw \
-  --network host \
-  solisart-viz \
-  --csv /app/data/your-data.csv --day <day_of_month>
+./run_visualization.sh <csv_file_path> <day_of_month>
 ```
+
+**Example:**
+```bash
+./run_visualization.sh ./example/donnees-SC2M202XXXX-2025-07.csv 22
+```
+
+The script will automatically:
+- Build the Docker image if needed
+- Set up proper volume mounts
+- Run the visualization with the specified parameters
+
+Note:
+You have to download manually your csv data as per illustrated here:
+![download csv](./HowToDownloadCSVFromSolisart.png)
 
 ### Parameters
 
-- `--csv`, `-c`: Path to the CSV data file to process
-- `--day`, `-d`: Day of the month to display (1-31)
+- `csv_file_path`: Path to the CSV data file to process
+- `day_of_month`: Day of the month to display (1-31)
 
-### Typical example
+### Advanced Usage
 
-```bash
-xhost +local:docker
-docker run --rm -it \
-  -e DISPLAY=$DISPLAY \
-  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-  -v $(pwd):/app/data \
-  -v $HOME/.Xauthority:/root/.Xauthority:rw \
-  --network host \
-  solisart-viz \
-  --csv /app/data/example/donnees-SC2M202XXXX-2025-07.csv --day 22
-```
+For advanced users who prefer direct Docker commands, see the detailed Docker command in the `run_visualization.sh` script.
 
 This will:
-1. Clean the CSV file by filtering data for the 15th day of each month
+1. Clean the CSV file by filtering data for the specified day of each month
 2. Create a cleaned version with `.clean.csv` suffix
 3. Generate an interactive plot with 4 subplots showing different system metrics
 
