@@ -46,12 +46,14 @@ xhost +local:docker
 ./run_visualization.sh ./example/donnees-SC2M202XXXX-2025-07.csv 22
 ```
 
-The script will automatically:
-- Build the Docker image if needed
-- Set up proper volume mounts
-- Run the visualization with the specified parameters
+This will:
+1. Clean the CSV file by filtering data for the specified day of each month
+2. Create a cleaned version with `.clean.csv` suffix
+3. Generate an interactive plot with 4 subplots showing different system metrics
 
-Note:
+![example](./example/SC2M202XXXXX-2025-07-22.png)
+
+[!NOTE]
 You have to download manually your csv data as per illustrated here:
 ![download csv](./HowToDownloadCSVFromSolisart.png)
 
@@ -63,13 +65,6 @@ You have to download manually your csv data as per illustrated here:
 ### Advanced Usage
 
 For advanced users who prefer direct Docker commands, see the detailed Docker command in the `run_visualization.sh` script.
-
-This will:
-1. Clean the CSV file by filtering data for the specified day of each month
-2. Create a cleaned version with `.clean.csv` suffix
-3. Generate an interactive plot with 4 subplots showing different system metrics
-
-![example](./example/SC2M202XXXXX-2025-07-22.png)
 
 ## Data Format
 
